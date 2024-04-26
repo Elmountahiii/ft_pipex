@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_check_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 22:05:02 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/04/26 22:32:50 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/04/26 22:07:48 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/04/26 22:16:35 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mandatory/pipex.h"
+#include "../pipex.h"
 
-int main(int argc, char **argv, char ** env)
+int ft_check_file(char * path, int flag)
 {
-    (void) env;
-    int     c_pid;
-    int     if_fd;
-    char    *command_path;
+	int	fd;
 
-    if (argc < 3)
-        return (0);
-    if_fd = ft_check_file(argv[1], O_RDONLY);
-    
-    return 0;
+	fd = open(path, flag);
+	if (fd == -1)
+		ft_perror_exit();
+
+	return (fd);
 }
