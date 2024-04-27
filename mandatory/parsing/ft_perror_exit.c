@@ -6,14 +6,13 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:13:11 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/04/26 22:22:32 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/04/27 15:02:07 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void    ft_perror_exit()
+void    ft_perror_exit(char *error)
 {
-    perror("Error ");
-	exit(2);
+    ft_print_exit(error, 2);
 }

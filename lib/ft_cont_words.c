@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_cont_words.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 22:05:02 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/04/27 15:05:59 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/04/27 11:40:32 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/04/27 11:45:56 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mandatory/pipex.h"
+#include "lib.h"
 
-int main(int argc, char **argv, char ** env)
+int	ft_count_words(char *str, char dil)
 {
-    (void) env;
-   // int     c_pid;
-    int     if_fd;
-    char    *path;
+	int	words;
+	int i;
 
-    if (argc < 2)
-        return (0);
-    if_fd = ft_check_file(argv[1], O_RDONLY);
-    path = ft_get_path(argv[2], env);
-	printf("input fd : %d\npath : %s\n", if_fd, path);
-    return 0;
+	if (!str || !dil)
+		return (-1);
+	i = 0;
+	words = 0;
+	while (str[i])
+	{
+		if (str[i] != dil)
+		{
+			while (str[i] && str[i] != dil)
+				i++;
+			
+			words ++;	
+		}
+		else
+		{
+			while (str[i] && str[i] == dil)
+				i++;
+		}
+	}
+	
+	return (words);
 }

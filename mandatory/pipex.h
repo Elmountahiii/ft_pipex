@@ -5,9 +5,11 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include "../lib/lib.h"
 
-char	*ft_get_command_path(char *command);
+char	*ft_get_path(char *command, char **env);
 int		ft_check_file(char * path, int flag);
-void	ft_perror_exit();
+void    ft_perror_exit(char *error);
+char    *ft_check_path(char **env);
 
 #endif

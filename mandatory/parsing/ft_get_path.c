@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_get_path.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 22:05:02 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/04/27 15:05:59 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/04/26 22:04:58 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/04/27 15:18:37 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mandatory/pipex.h"
+#include "../pipex.h"
 
-int main(int argc, char **argv, char ** env)
+char	*ft_get_path(char *command, char **env)
 {
-    (void) env;
-   // int     c_pid;
-    int     if_fd;
-    char    *path;
+	char	*path;
+	(void) command;
 
-    if (argc < 2)
-        return (0);
-    if_fd = ft_check_file(argv[1], O_RDONLY);
-    path = ft_get_path(argv[2], env);
-	printf("input fd : %d\npath : %s\n", if_fd, path);
-    return 0;
+	path = ft_check_path(env);
+	if (!path)
+		ft_perror_exit("Error : PATH NOT FOUND.\n");
+	return (path);
 }
