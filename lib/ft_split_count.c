@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_space.c                                      :+:      :+:    :+:   */
+/*   ft_split_count.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 11:40:07 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/04/29 13:56:17 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/04/29 15:57:21 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/04/29 15:58:55 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-int	ft_is_space(char c)
+int	ft_split_count(char  **split)
 {
-	if (c == ' ' || c == '\t' || c == '\n')
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (split && split[i])
+		i++;
+	return (i);
 }

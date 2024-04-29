@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_dil.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 15:30:30 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/04/29 15:51:47 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/04/27 11:39:05 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/04/29 13:00:58 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-char	**ft_split(char *str)
+char    **ft_split_dil(char *str, char dil)
 {
 	char 	**split;
 	int		index;
 	int		i;
 
-	split = malloc(sizeof(char *) * (ft_count_words(str) + 1));
+	split = malloc(sizeof(char *) * (ft_count_words_dil(str, dil) + 1));
 	if (!split)
 		return (NULL);
 	i = 0;
 	index = 0;
 	while (str && str[i])
 	{
-		if (str[i] && !ft_is_space(str[i]))
+		if (str[i] && str[i] != dil)
 		{
-			split[index] = ft_substr(str, i);
+			split[index++] = ft_substr_dil(str, i, dil);
 			if (!split[index])
 				return (ft_free_split(split, index), NULL);
-			index ++;
-			while (str[i] && !ft_is_space(str[i]))
+			while (str[i] && str[i] != dil)
 				i ++;
 		}
 		else
