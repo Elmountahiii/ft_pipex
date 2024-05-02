@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_commands.c                                :+:      :+:    :+:   */
+/*   ft_join_three.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 13:12:45 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/04/29 13:16:11 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/05/02 16:49:20 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/02 17:02:19 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "lib.h"
 
-char	**ft_split_commands(char *command)
+char	*ft_join_three(char *one, char *two, char *three)
 {
-	char **commands;
-	return (commands);
+    char    *join;
+    char    *temp;
+    
+    if (!one || !two || !three)
+        return (NULL);
+    temp = ft_strjoin(one,two);
+    join = ft_strjoin(temp, three);
+    free(temp);
+    return (join);
 }

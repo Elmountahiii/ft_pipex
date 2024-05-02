@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_path.c                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 11:58:19 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/04/29 16:58:39 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/05/02 17:16:09 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/02 17:16:42 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "lib.h"
 
-char *ft_check_path(char **env)
+char	*ft_strdup(char *s1)
 {
-	int	i;
+	int		len;
+	int		i;
+	char	*s2;
 
+	len = ft_strlen(s1);
+	s2 = malloc(len * sizeof(char) + 1);
 	i = 0;
-	while (env && env[i])
+	if (s2 == NULL)
 	{
-		if (ft_strnstr(env[i], "PATH", 4))
-			return (ft_strchr(env[i], '/'));
-		i ++;
+		return (NULL);
 	}
-	return (NULL);
+	while (s1[i])
+	{
+		s2[i] = s1[i];
+		i++;
+	}
+	s2[i] = '\0';
+	return (s2);
 }

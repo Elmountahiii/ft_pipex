@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:38:41 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/04/29 15:59:07 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/02 17:16:53 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,9 @@ void	ft_free_split(char **split, int c);
 char	*ft_substr_dil(char *str, int start, char dil);
 char	*ft_substr(char *str, int start);
 int     ft_split_count(char  **split);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_join_three(char *one, char *two, char *three);
+char	*ft_strdup(char *s1);
+
 
 #endif

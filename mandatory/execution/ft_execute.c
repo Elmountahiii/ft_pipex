@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_path.c                                      :+:      :+:    :+:   */
+/*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 22:04:58 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/02 17:43:23 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/05/02 15:17:42 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/02 18:56:25 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-char	*ft_get_path(char *command, char **env)
-{	char	**path_list;
-	int		i;
+void	ft_execute(char *command, char **env)
+{
 	char	*path;
+	char	**commands;
 
-	if (!ft_check_path(env))
-		ft_perror_exit("Error : PATH NOT FOUND.\n");
-	i = 0;
-	path_list = ft_split_dil(ft_check_path(env),':');
-	while (command && path_list && path_list[i])
-	{
-		path = ft_join_three(path_list[i], "/", command);
-		if (access(path, F_OK) != -1 && access(path, X_OK) != -1)
-			return (path);
-		free(path);
-		i ++;
-	}
-	return (NULL);
+	commands = ft_split(command);
+	path = ft_get_path(commands[0],env);
+	execv(path,commands);
+	ft_perror_exit("Command not found");
 }
