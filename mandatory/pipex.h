@@ -6,6 +6,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include "../lib/lib.h"
+# include <sys/wait.h>
 
 char	*ft_get_path(char *command, char **env);
 int		ft_check_file(char * path, int flag);

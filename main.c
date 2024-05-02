@@ -38,7 +38,7 @@ int main(int argc, char **argv, char **env)
 	{
 		dup2(if_fd, 0);
 		close(pipe_fd[0]);
-		dup2(pipe_fd[1], 1);
+		//dup2(pipe_fd[1], 1);
 		ft_execute(argv[2],env);
 	}else
 	{

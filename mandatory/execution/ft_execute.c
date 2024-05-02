@@ -19,6 +19,9 @@ void	ft_execute(char *command, char **env)
 
 	commands = ft_split(command);
 	path = ft_get_path(commands[0],env);
-	execv(path,commands);
+	if (path)
+		execv(path,commands);
+	free(path);
+	ft_free_split(commands, ft_split_count(commands));
 	ft_perror_exit("Command not found");
 }
