@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:38:41 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/02 17:16:53 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/04 16:04:09 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ int     ft_split_count(char  **split);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_join_three(char *one, char *two, char *three);
 char	*ft_strdup(char *s1);
-
-
+int     ft_is_quote(char c);
+int     ft_count_allocation(char *str, int *start);
+int     ft_skip_space(char *str, int index);
+int     ft_skip_quotes(char *str, int index);
+int     ft_count_quote_allocation(char *str, int *start);
 #endif

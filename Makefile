@@ -15,7 +15,7 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	@cd lib && make
 	$(CC) $(CFLAGS) $(OBJ) lib/lib.a -o $(NAME)
-
+	make clean
 clean :
 	$(RM) $(OBJ)
 	@cd lib && make clean

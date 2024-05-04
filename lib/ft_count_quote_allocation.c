@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_words.c                                   :+:      :+:    :+:   */
+/*   ft_count_quote_allocation.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 15:32:25 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/04 12:11:54 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/05/04 16:00:36 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/04 16:03:56 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib.h"
+ #include "lib.h"
 
-int	ft_count_words(char *str)
+int	ft_count_quote_allocation(char *str, int *start)
 {
-	int	words;
-	int i;
-
+	int		i;
+	char	sign;
+	
 	i = 0;
-	words = 0;
-	while (str && str[i])
-	{
-		if (str[i] && ft_is_quote(str[i]))
-		{
-			i = ft_skip_quotes(str, i);
-			words ++;
-		}else if (str[i] && !ft_is_space(str[i]))
-		{
-			i = ft_skip_space(str, i);
-			words ++;	
-		}
-		else
+	sign = str[(*start)];
+	(*start) ++;
+	 while (str[(*start) + i] && str[(*start) + i] != sign)
 			i ++;
-	}
-	return (words);
+	return (i);
 }

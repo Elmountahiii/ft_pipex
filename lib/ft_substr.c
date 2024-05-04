@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 12:38:04 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/04/29 14:00:22 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/04 15:58:02 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,7 @@ char	*ft_substr(char *str, int start)
 	char	*sub;
 	int		i;
 
-	i = 0;
-	while (str[i + start])
-	{
-		if (ft_is_space(str[i + start]))
-			break ;
-		i ++;
-	}
+	i = ft_count_allocation(str, &start);
 	end = start + i;
 	len = end - start;
 	i = 0;
