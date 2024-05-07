@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_file.c                                    :+:      :+:    :+:   */
+/*   ft_wait_children.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 22:07:48 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/07 11:10:19 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/05/07 13:04:04 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/07 13:16:30 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-int ft_check_file(char * path, int flag)
+void	ft_wait_children(int *p_id)
 {
-	int	fd;
+	int i;
 
-	fd = open(path, flag);
-	if (fd == -1)
-		ft_perror_exit("\033[0;31mError with input_fd.\033[0m\n");
-	return (fd);
+	i = 0;
+	while (p_id && p_id[i])
+	{
+		waitpid(p_id[i],NULL, 0);
+		i ++;
+	}
+	printf("done\n");
 }
