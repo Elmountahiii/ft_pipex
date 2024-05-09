@@ -28,7 +28,8 @@ void	ft_open_files(int argc, char **argv, int *input, int *output);
 void    ft_pipex(int argc, char **argv, char**env);
 int     ft_count_commands(int argc);
 int     **ft_allocate_pipes(int argc);
-t_pipex *ft_init_struct(int argc, char **argv);
+t_pipex *ft_init_struct(int argc, char **argv, char **env);
 void	ft_wait_children(int *p_id);
+void	ft_check_commands(int argc, char **argv, char **env);
 
 #endif

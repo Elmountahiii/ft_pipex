@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:04:58 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/09 12:56:08 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/09 17:45:28 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ char	*ft_get_path(char *command, char **env)
 	{
 		path = ft_join_three(path_list[i], "/", command);
 		if (access(path, F_OK) != -1 && access(path, X_OK) != -1)
+		{
+			ft_free_split(path_list, ft_split_count(path_list));
 			return (path);
+		}
 		free(path);
 		i ++;
 	}

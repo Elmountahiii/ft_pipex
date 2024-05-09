@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:17:42 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/09 12:58:49 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/09 16:41:48 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,4 @@ void	ft_execute(char *command, char **env)
 		execv(path,commands);
 	free(path);
 	ft_free_split(commands, ft_split_count(commands));
-	ft_print_error_exit(NULL);
 }
