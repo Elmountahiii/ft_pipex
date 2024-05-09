@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_exit.c                                    :+:      :+:    :+:   */
+/*   ft_print_error_exite.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 14:59:18 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/04/27 15:00:18 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/05/09 12:49:24 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/09 12:51:20 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-void	ft_print_exit(char *str, int fd)
+void	ft_print_error_exit(char *message)
 {
-	ft_print(str, fd);
-	exit(fd);
+	if (!message)
+		perror("");
+	else
+	perror(message);
+	exit(1);
 }

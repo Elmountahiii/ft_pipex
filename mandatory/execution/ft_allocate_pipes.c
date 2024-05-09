@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:16:08 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/08 20:55:53 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/09 12:56:30 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	**ft_allocate_pipes(int argc)
 	//printf("\033[0;34mTrying to allocate pipes.....\033[0m\n");
 	pipes = malloc(sizeof(int *) * (commands_count + 1));
 	if (!pipes)
-		ft_perror_exit("\033[0;31mError allocating pipes.\033[0m\n");
+		ft_print_error_exit(NULL);
 	//printf("\033[0;32mSuccessfully allocating pipes\033[0m\n");
 	// free
 	//printf("\033[0;34mTrying to pipe.....\033[0m\n");
@@ -32,7 +32,7 @@ int	**ft_allocate_pipes(int argc)
 	{
 		pipes[i] = malloc(sizeof(int) * 2);
 		if (pipe(pipes[i]) == -1)
-			ft_perror_exit("\033[0;31mError pipe:.\033[0m\n");
+			ft_print_error_exit(NULL);
 		i ++; 
 	}
 	pipes[i] = NULL;

@@ -1,0 +1,6 @@
+Inside Parent Process : We firstly close the reading end
+of first pipe (fd1[0]) then write the string though writing end of the pipe (fd1[1]).
+Now parent will wait until child process is finished.
+After the child process, parent will close the writing end of second pipe(fd2[1])
+and read the string through reading end of pipe (fd2[0]).
+

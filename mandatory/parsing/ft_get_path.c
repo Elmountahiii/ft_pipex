@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_path.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:04:58 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/02 18:20:24 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 12:56:08 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_get_path(char *command, char **env)
 	char	*path;
 
 	if (!ft_check_path(env))
-		ft_perror_exit("Error : PATH NOT FOUND.\n");
+		ft_print_error_exit(NULL);
 	i = 0;
 	path_list = ft_split_dil(ft_check_path(env),':');
 	while (command && path_list && path_list[i])

@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:42:32 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/08 20:54:08 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/09 13:14:24 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void    ft_pipex(int argc, char **argv, char**env)
     while (pipex->arg_counter < (argc - 1))
     {
         if ((pipex->p_id[pipex->pipe_counter] = fork()) == -1)
-            ft_perror_exit("Error With Fork\n");
+            ft_print_error_exit(NULL);
         if (pipex->p_id[pipex->pipe_counter] == 0)
         {
            // printf("\033[0;34mStart of command %d ...\033[0m\n",pipex->pipe_counter);
@@ -53,8 +53,12 @@ void    ft_pipex(int argc, char **argv, char**env)
     while (i < pipex->pipe_counter)
     {
         close(pipex->pipes[i][0]);
+        free(pipex->pipes[i]);
         i++;
     }
+    free(pipex->pipes);
+
     while(wait(NULL) > 0);
-    
+    close(pipex->input_file);
+    close(pipex->output_file);
 }

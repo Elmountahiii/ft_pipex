@@ -21,7 +21,6 @@ typedef struct s_pipex {
 
 char	*ft_get_path(char *command, char **env);
 int		ft_check_file(char * path, int flag);
-void    ft_perror_exit(char *error);
 char    *ft_check_path(char **env);
 void	ft_execute(char *command, char **env);
 int     ft_replace_fd(int dest, int src);
