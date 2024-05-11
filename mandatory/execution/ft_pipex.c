@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:42:32 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/09 17:56:57 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/11 12:24:23 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,17 @@ void    ft_pipex(int argc, char **argv, char**env)
             pipex->arg_counter++;
         }
     }
-    int i = 0;
+   int i = 0;
     while (i < pipex->pipe_counter)
     {
         close(pipex->pipes[i][0]);
         free(pipex->pipes[i]);
         i++;
     }
-    free(pipex->pipes);
-
     while(wait(NULL) > 0);
     close(pipex->input_file);
     close(pipex->output_file);
+    free(pipex->pipes);
+    free(pipex->p_id);
+    free(pipex);
 }

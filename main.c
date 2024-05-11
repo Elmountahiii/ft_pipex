@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:05:02 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/09 17:07:33 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/11 10:56:53 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,3 +22,4 @@ int main(int argc, char **argv, char **env)
 		ft_pipex(argc,argv,env);
 	return 0;
 }
+
