@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:42:32 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/11 12:24:23 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/11 19:31:30 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void    ft_pipex(int argc, char **argv, char**env)
             if(pipex->pipe_counter == 0)
                 dup2(pipex->input_file,STDIN_FILENO);
             else
-                dup2(pipex->pipes[pipex->pipe_counter -1 ][0], STDIN_FILENO);
+                dup2(pipex->pipes[pipex->pipe_counter -1][0], STDIN_FILENO);
                 
             close(pipex->pipes[pipex->pipe_counter][0]);
             
@@ -44,7 +44,7 @@ void    ft_pipex(int argc, char **argv, char**env)
             pipex->arg_counter++;
         }
     }
-   int i = 0;
+    int i = 0;
     while (i < pipex->pipe_counter)
     {
         close(pipex->pipes[i][0]);

@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_commands.c                                :+:      :+:    :+:   */
+/*   ft_extract_commands.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/09 17:10:31 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/11 19:03:38 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/05/11 14:55:02 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/11 19:18:27 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void ft_check_commands(char **env, t_pipex *pipex)
+void ft_extract_commands(char **argv, t_pipex *pipex)
 {
-	int i;
-	char *path;
-	
+	char **commands;
+	int	i;
+
 	i = 0;
+	pipex->commands_name = malloc(sizeof(char *) * (pipex->commands_count + 1));
+	if (!pipex->commands_name)
+	{
+		ft_clean_struct(pipex);
+		ft_error_exit("Error","malloc");
+	}
 	while (i < pipex->commands_count)
 	{
-		
-		path = ft_get_path(pipex->commands_name[i], env);
-		if (!path)
+		commands = ft_split(argv[i + 2]);
+		if (!commands)
 		{
-			ft_command_not_found(pipex->commands_name[i]);
 			ft_clean_struct(pipex);
-			exit(1);
+			ft_error_exit("Error","malloc");
 		}
-		free(path);
+		pipex->commands_name[i] = ft_strdup(commands[0]);
+		ft_free_split(commands, ft_split_count(commands));
 		i ++;
 	}
+	pipex->commands_name[i] = NULL;
 }
-

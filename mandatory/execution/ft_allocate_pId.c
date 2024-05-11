@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_open_files.c                                    :+:      :+:    :+:   */
+/*   ft_allocate_pId.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/06 17:54:44 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/11 19:00:32 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/05/11 15:55:34 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/11 18:59:46 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	ft_open_files(int argc, char **argv, t_pipex *pipex)
+void	ft_allocate_pId(t_pipex *pipex)
 {
-	char	*error_file;
-	
-	pipex->input_file = open(argv[1], O_RDONLY);
-	pipex->output_file = open(argv[argc-1], O_WRONLY | O_CREAT | O_TRUNC,0664);
-	
-	if (pipex->input_file == -1 || pipex->output_file == -1)
+	pipex->p_id = malloc(sizeof(int) * (pipex->commands_count));
+	if (!pipex->p_id)
 	{
-		if (pipex->input_file == -1)
-			error_file = argv[1];
-		else
-			error_file = argv[argc - 1];
 		ft_clean_struct(pipex);
-		ft_error_exit("no such file or directory", error_file);
+		ft_error_exit("Error","malloc");
 	}
 }

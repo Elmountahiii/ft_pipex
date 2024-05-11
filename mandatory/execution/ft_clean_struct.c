@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_command.c                                 :+:      :+:    :+:   */
+/*   ft_clean_struct.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/06 19:05:01 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/11 15:46:28 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/05/11 15:38:53 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/11 18:39:49 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	ft_count_commands(int argc , t_pipex *pipex)
+void	ft_clean_struct(t_pipex *pipex)
 {
-	int	start;
-    int i;
-	
-	start = 2;
-    i = 0;
-	while (start < argc -1)
-    {
-        start++;
-		i ++;
-    }
-	pipex->commands_count = i;
+	int i;
+
+	i = 0;
+	if (pipex->input_file != -1)
+		close(pipex->input_file);
+	if (pipex->output_file != -1)
+		close(pipex->output_file);
+	ft_free_split(pipex->commands_name, ft_split_count(pipex->commands_name));
+	while (i < pipex->pipe_counter)
+	{
+		close(pipex->pipes[i][0]);
+		free(pipex->pipes[i]);
+		i++;
+	}
+	free(pipex->pipes);
+	free(pipex->p_id);
+	free(pipex);
 }
+

@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:38:41 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/09 17:39:36 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/11 14:47:01 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ int     ft_count_allocation(char *str, int *start);
 int     ft_skip_space(char *str, int index);
 int     ft_skip_quotes(char *str, int index);
 int     ft_count_quote_allocation(char *str, int *start);
-void	ft_print_error_exit(char *message);
 void	ft_error_exit(char *message, char *error);
+void	ft_command_not_found(char *command);
 #endif

@@ -6,29 +6,32 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:16:08 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/09 17:58:45 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/11 19:01:58 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-int	**ft_allocate_pipes(int argc)
+void	ft_allocate_pipes(t_pipex *pipex)
 {
-	int	**pipes;
-	int	commands_count;
 	int	i;
-	commands_count = ft_count_commands(argc);
+	
 	i = 0;
-	pipes = malloc(sizeof(int *) * (commands_count + 1));
-	if (!pipes)
-		ft_error_exit("Error","malloc");
-	while (i < commands_count)
+	pipex->pipes = malloc(sizeof(int *) * (pipex->commands_count + 1));
+	if (!pipex->pipes)
 	{
-		pipes[i] = malloc(sizeof(int) * 2);
-		if (pipe(pipes[i]) == -1)
-			ft_error_exit("Error","unable to fork");
+		ft_clean_struct(pipex);
+		ft_error_exit("Error","malloc");
+	}
+	while (i < pipex->commands_count)
+	{
+		pipex->pipes[i] = malloc(sizeof(int) * 2);
+		if (!pipex->pipes[i] || pipe(pipex->pipes[i]) == -1)
+		{
+			ft_clean_struct(pipex);
+			ft_error_exit("Error","malloc");
+		}
 		i ++; 
 	}
-	pipes[i] = NULL;
-	return (pipes);
+	pipex->pipes[i] = NULL;
 }

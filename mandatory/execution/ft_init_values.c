@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_command.c                                 :+:      :+:    :+:   */
+/*   ft_init_values.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/06 19:05:01 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/11 15:46:28 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/05/11 16:13:37 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/11 16:20:20 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	ft_count_commands(int argc , t_pipex *pipex)
+void	ft_init_values(t_pipex *pipex)
 {
-	int	start;
-    int i;
-	
-	start = 2;
-    i = 0;
-	while (start < argc -1)
-    {
-        start++;
-		i ++;
-    }
-	pipex->commands_count = i;
+	pipex->pipe_counter = 0;
+	pipex->arg_counter = 2;
+	pipex->commands_count = 0;
+	pipex->commands_name = NULL;
+	pipex->pipes = NULL;
+	pipex->p_id = NULL;
+	pipex->input_file = -1;
+	pipex->output_file = -1;
 }
