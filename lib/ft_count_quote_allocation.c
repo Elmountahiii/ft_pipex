@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "lib.h"
+#include "lib.h"
 
 int	ft_count_quote_allocation(char *str, int *start)
 {
 	int		i;
 	char	sign;
-	
+
 	i = 0;
 	sign = str[(*start)];
-	(*start) ++;
-	 while (str[(*start) + i] && str[(*start) + i] != sign)
-			i ++;
+	(*start)++;
+	while (str[(*start) + i] && str[(*start) + i] != sign)
+		i ++;
 	return (i);
 }

@@ -12,12 +12,12 @@
 
 #include "../pipex.h"
 
-void	ft_allocate_pId(t_pipex *pipex)
+void	ft_allocate_pid(t_pipex *pipex)
 {
 	pipex->p_id = malloc(sizeof(int) * (pipex->commands_count));
 	if (!pipex->p_id)
 	{
 		ft_clean_struct(pipex);
-		ft_error_exit("Error","malloc");
+		ft_error_exit("Error", "malloc");
 	}
 }

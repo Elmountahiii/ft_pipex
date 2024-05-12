@@ -12,17 +12,15 @@
 
 #include "lib.h"
 
-int    ft_skip_quotes(char *str, int index)
+int	ft_skip_quotes(char *str, int index)
 {
-    int    sign;
+	int	sign;
 
-	
-    sign = str[index];
-     index ++;
-    while (str[index] && str[index] != sign)
-			index ++;    
-    if (ft_is_quote(str[index]))
-        index ++;
-    return (index);
+	sign = str[index];
+	index++;
+	while (str[index] && str[index] != sign)
+		index ++;
+	if (ft_is_quote(str[index]))
+		index ++;
+	return (index);
 }
-

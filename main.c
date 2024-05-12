@@ -12,19 +12,14 @@
 
 #include "mandatory/pipex.h"
 
-void check_leaks()
-{
-   system("leaks pipex");
-}
-int main(int argc, char **argv, char **env)
+int	main(int argc, char **argv, char **env)
 {
 	if (argc == 5)
 		ft_pipex(argc, argv, env);
 	else
 	{
-		ft_print("Error : bad arguments\n",2);
-		exit(1);
+		ft_print("Error : bad arguments\n", 2);
+		exit (1);
 	}
-	return 0;
+	return (0);
 }
-

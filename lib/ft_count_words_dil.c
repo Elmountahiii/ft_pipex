@@ -15,7 +15,7 @@
 int	ft_count_words_dil(char *str, char dil)
 {
 	int	words;
-	int i;
+	int	i;
 
 	i = 0;
 	words = 0;
@@ -25,7 +25,7 @@ int	ft_count_words_dil(char *str, char dil)
 		{
 			while (str[i] && str[i] != dil)
 				i++;
-			words ++;	
+			words ++;
 		}
 		else
 			i++;

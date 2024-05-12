@@ -18,9 +18,9 @@ void	ft_execute(char *command, char **env)
 	char	**commands;
 
 	commands = ft_split(command);
-	path = ft_get_path(commands[0],env);
+	path = ft_get_path(commands[0], env);
 	if (path)
-		execv(path,commands);
+		execv(path, commands);
 	free(path);
 	ft_free_split(commands, ft_split_count(commands));
 }

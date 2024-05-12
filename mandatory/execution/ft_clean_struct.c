@@ -14,7 +14,7 @@
 
 void	ft_clean_struct(t_pipex *pipex)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (pipex->input_file != -1)
@@ -32,4 +32,3 @@ void	ft_clean_struct(t_pipex *pipex)
 	free(pipex->p_id);
 	free(pipex);
 }
-

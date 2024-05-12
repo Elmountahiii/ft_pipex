@@ -13,7 +13,8 @@
 #include "../pipex.h"
 
 char	*ft_get_path(char *command, char **env)
-{	char	**path_list;
+{
+	char	**path_list;
 	int		i;
 	char	*path;
 
@@ -23,7 +24,7 @@ char	*ft_get_path(char *command, char **env)
 		exit(1);
 	}
 	i = 0;
-	path_list = ft_split_dil(ft_check_path(env),':');
+	path_list = ft_split_dil(ft_check_path(env), ':');
 	while (command && path_list && path_list[i])
 	{
 		path = ft_join_three(path_list[i], "/", command);

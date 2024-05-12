@@ -15,17 +15,17 @@
 int	ft_count_allocation(char *str, int *start)
 {
 	int		i;
-	
+
 	i = 0;
 	while (str[i + (*start)])
 	{
 		if (ft_is_quote(str[(*start)]))
 		{
-			i = ft_count_quote_allocation(str,start);
-			break;
+			i = ft_count_quote_allocation(str, start);
+			break ;
 		}
 		else if (ft_is_space(str[i + (*start)]))
-			break;
+			break ;
 		i ++;
 	}
 	return (i);

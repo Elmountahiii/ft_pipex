@@ -12,7 +12,7 @@
 
 #include "lib.h"
 
-int ft_is_quote(char c)
+int	ft_is_quote(char c)
 {
 	if (c == '\'' || c == '\"')
 		return (1);

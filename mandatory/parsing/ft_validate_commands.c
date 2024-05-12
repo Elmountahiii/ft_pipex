@@ -28,7 +28,7 @@ void	ft_validate_commands(char **env, t_pipex *pipex)
 		}
 		ft_clean_struct(pipex);
 		exit(1);
-	}else
+	}
+	else
 		ft_check_commands(env, pipex);
-	
 }

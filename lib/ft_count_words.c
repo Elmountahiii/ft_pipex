@@ -15,7 +15,7 @@
 int	ft_count_words(char *str)
 {
 	int	words;
-	int i;
+	int	i;
 
 	i = 0;
 	words = 0;
@@ -25,10 +25,11 @@ int	ft_count_words(char *str)
 		{
 			i = ft_skip_quotes(str, i);
 			words ++;
-		}else if (str[i] && !ft_is_space(str[i]))
+		}
+		else if (str[i] && !ft_is_space(str[i]))
 		{
 			i = ft_skip_space(str, i);
-			words ++;	
+			words ++;
 		}
 		else
 			i ++;

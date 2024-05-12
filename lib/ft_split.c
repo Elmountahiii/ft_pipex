@@ -3,23 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yel-moun <yel-moun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:30:30 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/07 11:43:58 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/12 14:42:15 by yel-moun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
+static int	ft_allocate(char ***split, char *str)
+{
+	*split = malloc(sizeof(char *) * (ft_count_words(str) + 1));
+	if (!(*split))
+		return (1);
+	return (0);
+}
+
 char	**ft_split(char *str)
 {
-	char 	**split;
+	char	**split;
 	int		index;
 	int		i;
-	
-	split = malloc(sizeof(char *) * (ft_count_words(str) + 1));
-	if (!split)
+
+	if (ft_allocate(&split, str))
 		return (NULL);
 	i = 0;
 	index = 0;

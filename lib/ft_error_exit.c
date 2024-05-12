@@ -17,7 +17,6 @@ void	ft_error_exit(char *message, char *error)
 	int	i;
 
 	i = 0;
-
 	while (message && message[i])
 	{
 		write(2, &message[i], 1);

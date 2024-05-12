@@ -15,10 +15,10 @@
 void	ft_open_files(int argc, char **argv, t_pipex *pipex)
 {
 	char	*error_file;
-	
+
 	pipex->input_file = open(argv[1], O_RDONLY);
-	pipex->output_file = open(argv[argc-1], O_WRONLY | O_CREAT | O_TRUNC,0664);
-	
+	pipex->output_file = open(argv[argc - 1],
+			O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (pipex->input_file == -1 || pipex->output_file == -1)
 	{
 		if (pipex->input_file == -1)

@@ -12,7 +12,7 @@
 
 #include "lib.h"
 
-void ft_print(char *str, int fd)
+void	ft_print(char *str, int fd)
 {
 	if (str)
 		write(fd, str, ft_strlen(str));

@@ -14,13 +14,13 @@
 
 char	*ft_join_three(char *one, char *two, char *three)
 {
-    char    *join;
-    char    *temp;
-    
-    if (!one || !two || !three)
-        return (NULL);
-    temp = ft_strjoin(one,two);
-    join = ft_strjoin(temp, three);
-    free(temp);
-    return (join);
+	char	*join;
+	char	*temp;
+
+	if (!one || !two || !three)
+		return (NULL);
+	temp = ft_strjoin(one, two);
+	join = ft_strjoin(temp, three);
+	free(temp);
+	return (join);
 }

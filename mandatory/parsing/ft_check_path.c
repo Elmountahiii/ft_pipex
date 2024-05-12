@@ -12,7 +12,7 @@
 
 #include "../pipex.h"
 
-char *ft_check_path(char **env)
+char	*ft_check_path(char **env)
 {
 	int	i;
 

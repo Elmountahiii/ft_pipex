@@ -12,11 +12,12 @@
 
 #include "lib.h"
 
-char    **ft_split_dil(char *str, char dil)
+char	**ft_split_dil(char *str, char dil)
 {
-	char 	**split;
+	char	**split;
 	int		index;
 	int		i;
+
 	split = malloc(sizeof(char *) * (ft_count_words_dil(str, dil) + 1));
 	if (!split)
 		return (NULL);

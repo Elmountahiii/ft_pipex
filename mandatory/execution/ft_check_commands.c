@@ -12,15 +12,14 @@
 
 #include "../pipex.h"
 
-void ft_check_commands(char **env, t_pipex *pipex)
+void	ft_check_commands(char **env, t_pipex *pipex)
 {
-	int i;
-	char *path;
-	
+	int		i;
+	char	*path;
+
 	i = 0;
 	while (i < pipex->commands_count)
 	{
-		
 		path = ft_get_path(pipex->commands_name[i], env);
 		if (!path)
 		{
@@ -32,4 +31,3 @@ void ft_check_commands(char **env, t_pipex *pipex)
 		i ++;
 	}
 }
-

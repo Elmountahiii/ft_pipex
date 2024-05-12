@@ -12,7 +12,7 @@
 
 #include "../pipex.h"
 
-int ft_check_file(char *path, int flag)
+int	ft_check_file(char *path, int flag)
 {
 	int	fd;
 

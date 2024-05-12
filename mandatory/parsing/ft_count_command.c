@@ -12,17 +12,17 @@
 
 #include "../pipex.h"
 
-void	ft_count_commands(int argc , t_pipex *pipex)
+void	ft_count_commands(int argc, t_pipex *pipex)
 {
 	int	start;
-    int i;
-	
+	int	i;
+
 	start = 2;
-    i = 0;
+	i = 0;
 	while (start < argc -1)
-    {
-        start++;
+	{
+		start++;
 		i ++;
-    }
+	}
 	pipex->commands_count = i;
 }
