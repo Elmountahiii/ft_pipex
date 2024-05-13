@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-moun <yel-moun@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 22:38:41 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/12 13:42:40 by yel-moun        ###   ########.fr       */
+/*   Created: 2024/05/13 14:52:45 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/13 14:52:51 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
