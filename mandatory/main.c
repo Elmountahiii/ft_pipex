@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_command_bonus.c                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 17:41:32 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/14 12:46:19 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/04/26 22:05:02 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/14 14:51:53 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex_bonus.h"
+#include "pipex.h"
 
-void	ft_count_commands(int argc, t_pipex *pipex)
+int	main(int argc, char **argv, char **env)
 {
-	int	start;
-	int	i;
-
-	if (pipex->is_here_doc)
-		start = 3;
+	if (argc == 5)
+		ft_pipex(argc, argv, env);
 	else
-		start = 2;
-	i = 0;
-	while (start < argc -1)
 	{
-		start++;
-		i ++;
+		ft_print("Error : bad arguments\n", 2);
+		exit (1);
 	}
-	pipex->commands_count = i;
+	return (0);
 }

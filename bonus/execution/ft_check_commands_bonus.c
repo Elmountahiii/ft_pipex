@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:36:29 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/13 18:28:13 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/14 12:43:09 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	ft_check_commands(char **env, t_pipex *pipex)
 		path = ft_get_path(pipex->commands_name[i], env);
 		if (!path)
 		{
+			printf("%s\n",pipex->commands_name[i]);
+			printf("HHH\n");
 			ft_command_not_found(pipex->commands_name[i]);
 			ft_clean_struct(pipex);
 			exit(1);

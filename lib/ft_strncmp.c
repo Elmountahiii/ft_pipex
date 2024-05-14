@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_command_bonus.c                           :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 17:41:32 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/14 12:46:19 by yel-moun         ###   ########.fr       */
+/*   Created: 2023/12/09 14:33:17 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/14 11:10:12 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex_bonus.h"
+#include "lib.h"
 
-void	ft_count_commands(int argc, t_pipex *pipex)
+int	ft_strncmp(char *s1, char *s2, int n)
 {
-	int	start;
-	int	i;
+	int	t;
 
-	if (pipex->is_here_doc)
-		start = 3;
-	else
-		start = 2;
-	i = 0;
-	while (start < argc -1)
+	t = 0;
+	while ((s1[t] != '\0' || s2[t] != '\0') && t < n)
 	{
-		start++;
-		i ++;
+		if (s1[t] != s2[t])
+		{
+			return ((unsigned char)s1[t] - (unsigned char)s2[t]);
+		}
+		t ++;
 	}
-	pipex->commands_count = i;
+	return (0);
 }

@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_check_here_doc.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 22:05:02 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/13 16:39:57 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/05/14 11:03:05 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/14 12:37:07 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mandatory/pipex.h"
+#include "../pipex_bonus.h"
 
-int	main(int argc, char **argv, char **env)
+void	ft_check_here_doc(char *str, t_pipex *pipex)
 {
-	if (argc == 5)
-		ft_pipex(argc, argv, env);
+	int	is_heredoc;
+	
+	is_heredoc = ft_strncmp(str, "here_doc", ft_strlen("here_doc"));
+	if (is_heredoc == 0)
+		pipex->is_here_doc = 1;
 	else
-	{
-		ft_print("Error : bad arguments\n", 2);
-		exit (1);
-	}
-	return (0);
+		pipex->is_here_doc = 0;
 }

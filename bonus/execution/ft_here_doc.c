@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_command_bonus.c                           :+:      :+:    :+:   */
+/*   ft_here_doc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 17:41:32 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/14 12:46:19 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/05/14 13:00:11 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/14 17:23:08 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex_bonus.h"
 
-void	ft_count_commands(int argc, t_pipex *pipex)
+void	ft_here_doc(t_pipex *pipex)
 {
-	int	start;
-	int	i;
+	char	*line;
+	char	*tmp;
 
-	if (pipex->is_here_doc)
-		start = 3;
-	else
-		start = 2;
-	i = 0;
-	while (start < argc -1)
+	line = NULL;
+	tmp = NULL;
+	
+	
+	
+	while (1)
 	{
-		start++;
-		i ++;
+		ft_print("pipe heredoc> ", 1);
+		line = get_next_line(0);
+		if (!ft_strncmp(line, pipex->limiter, ft_strlen(pipex->limiter)))
+		{
+			free(line);
+			break ;
+		}
+		ft_print(line, pipex->pipes[0][0]);
+		free(line);
 	}
-	pipex->commands_count = i;
 }

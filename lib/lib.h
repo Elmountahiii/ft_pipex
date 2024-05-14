@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include "get_next_line/get_next_line.h"
 
 char	*ft_strchr(char *s, int c);
 int		ft_strlen(char *str);
@@ -40,5 +41,6 @@ int		ft_skip_quotes(char *str, int index);
 int		ft_count_quote_allocation(char *str, int *start);
 void	ft_error_exit(char *message, char *error);
 void	ft_command_not_found(char *command);
+int		ft_strncmp(char *s1, char *s2, int n);
 
 #endif

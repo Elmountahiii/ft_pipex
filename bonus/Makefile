@@ -9,7 +9,9 @@ execution/ft_open_files_bonus.c   parsing/ft_count_command_bonus.c \
 execution/ft_allocate_pipes_bonus.c execution/ft_init_struct_bonus.c execution/ft_pipex_bonus.c \
 execution/ft_check_commands_bonus.c parsing/ft_extract_commands_bonus.c \
 parsing/ft_validate_commands_bonus.c execution/ft_allocate_pId_bonus.c execution/ft_init_values_bonus.c \
-execution/ft_clean_struct_bonus.c 
+execution/ft_clean_struct_bonus.c  execution/ft_init_heredoc.c parsing/ft_check_here_doc.c  parsing/ft_debug.c \
+execution/ft_here_doc.c
+
 
 OBJ = $(SRC:.c=.o)
 RM = rm -rf

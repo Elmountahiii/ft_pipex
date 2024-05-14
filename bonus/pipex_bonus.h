@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:43:51 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/13 18:25:20 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/14 21:15:50 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 typedef struct s_pipex
 {
 	int		pipe_counter;
+	int		command_executed;
 	int		commands_count;
 	char	**commands_name;
 	int		**pipes;
@@ -30,6 +31,8 @@ typedef struct s_pipex
 	int		output_file;
 	int		*p_id;
 	int		arg_counter;
+	int		is_here_doc;
+	char	*limiter;
 }	t_pipex;
 
 char	*ft_get_path(char *command, char **env);
@@ -48,5 +51,9 @@ void	ft_validate_commands(char **env, t_pipex *pipex);
 void	ft_extract_commands(char **argv, t_pipex *pipex);
 void	ft_init_values(t_pipex *pipex);
 void	ft_clean_struct(t_pipex *pipex);
+void	ft_init_heredoc(char **argv, t_pipex *pipex);
+void	ft_check_here_doc(char *str, t_pipex *pipex);
+void	ft_debug(t_pipex *pipex);
+void	ft_here_doc(t_pipex *pipex);
 
 #endif
