@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_clean_struct_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elmountahi <elmountahi@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:36:25 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/14 21:59:40 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/14 23:56:06 by elmountahi       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ft_clean_struct(t_pipex *pipex)
 	while (i < (pipex->pipe_counter - 1))
 	{
 		close(pipex->pipes[i][0]);
+		close(pipex->pipes[i][1]);
 		free(pipex->pipes[i]);
 		i++;
 	}

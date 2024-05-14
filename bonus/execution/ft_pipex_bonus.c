@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pipex_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elmountahi <elmountahi@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:41:44 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/14 22:49:45 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/15 00:43:46 by elmountahi       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,18 @@ static void	ft_read_from(t_pipex *pipex)
 	}
 	else
 		dup2(pipex->pipes[pipex->pipe_counter - 1][0], STDIN_FILENO);
-	close(pipex->pipes[pipex->pipe_counter -1][1]);
-		close(pipex->pipes[pipex->pipe_counter -1][0]);
-
+		close(pipex->input_file);
+		close(pipex->pipes[pipex->pipe_counter][0]);
 }
 
 static void	ft_write_to(t_pipex *pipex)
 {
-	if (pipex->c == (pipex->commands_count -1 ))
-	{
 		dup2(pipex->output_file, STDOUT_FILENO);
-	}
-	else
-		dup2(pipex->pipes[pipex->pipe_counter][1], STDOUT_FILENO);
-	close(pipex->pipes[pipex->pipe_counter - 1][0]);
-	
+		printf("pipe counter: %d\n", pipex->pipe_counter);
+		printf("pipe c: %d\n", pipex->c);
+		fflush(stdout); // Force the output to be written to the file
+		close(pipex->pipes[pipex->pipe_counter][1]);
+		close(pipex->output_file);	
 }
 
 void	ft_pipex(int argc, char **argv, char**env)
@@ -43,8 +40,9 @@ void	ft_pipex(int argc, char **argv, char**env)
 	t_pipex	*pipex;
 
 	pipex = ft_init_struct(argc, argv, env);
-	while (pipex->arg_counter < (argc - 1))
+	while (pipex->c < pipex->commands_count)
 	{
+		
 		pipex->p_id[pipex->pipe_counter] = fork();
 		if (pipex->p_id[pipex->pipe_counter] == -1)
 			ft_error_exit("Error", "unable to fork");
@@ -56,11 +54,6 @@ void	ft_pipex(int argc, char **argv, char**env)
 		}
 		else
 		{
-			// if (pipex->pipe_counter > 0)
-			// close(pipex->pipes[pipex->pipe_counter -1 ][1]);
-			// else
-			// close(pipex->pipes[0][1]);
-			
 			pipex->pipe_counter++;
 			pipex->arg_counter++;
 			pipex->c++;

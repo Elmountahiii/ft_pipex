@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_here_doc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elmountahi <elmountahi@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:00:11 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/14 17:23:08 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/14 23:26:22 by elmountahi       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	ft_here_doc(t_pipex *pipex)
 {
 	char	*line;
-	char	*tmp;
+	//char	*tmp;
 
 	line = NULL;
-	tmp = NULL;
+	//tmp = NULL;
 	
 	
 	

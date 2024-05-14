@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_allocate_pipes_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elmountahi <elmountahi@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:35:42 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/14 21:58:02 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/14 23:40:17 by elmountahi       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ void	ft_allocate_pipes(t_pipex *pipex)
 		}
 		i ++;
 	}
+
 }
