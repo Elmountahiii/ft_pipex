@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:37:30 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/14 21:15:36 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/14 22:25:51 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	ft_init_values(t_pipex *pipex)
 	pipex->arg_counter = 2;
 	pipex->commands_count = 0;
 	pipex->commands_name = NULL;
-	pipex->limiter = NULL;
 	pipex->is_here_doc = 0;
+	pipex->limiter = NULL;
 	pipex->pipes = NULL;
-	pipex->command_executed = 0;
 	pipex->p_id = NULL;
 	pipex->input_file = -1;
 	pipex->output_file = -1;
+	pipex->c = 0;
 }

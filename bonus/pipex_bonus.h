@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:43:51 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/14 21:15:50 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/14 22:25:39 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_pipex
 	int		arg_counter;
 	int		is_here_doc;
 	char	*limiter;
+	int		c;
 }	t_pipex;
 
 char	*ft_get_path(char *command, char **env);

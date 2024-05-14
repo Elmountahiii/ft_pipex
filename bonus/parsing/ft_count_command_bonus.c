@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:41:32 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/14 12:46:19 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/14 21:39:22 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ void	ft_count_commands(int argc, t_pipex *pipex)
 	int	start;
 	int	i;
 
-	if (pipex->is_here_doc)
-		start = 3;
-	else
-		start = 2;
+	start = 2;
 	i = 0;
 	while (start < argc -1)
 	{

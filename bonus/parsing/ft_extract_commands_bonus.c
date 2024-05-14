@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:41:29 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/14 13:23:38 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/14 21:39:33 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,25 @@ void	ft_extract_commands(char **argv, t_pipex *pipex)
 {
 	char	**commands;
 	int		i;
-	int 	c;
 
-	if (pipex->is_here_doc)
-		i = 1;
-	else
-		i = 0;
-	c = 0;
+	i = 0;
 	pipex->commands_name = malloc(sizeof(char *) * (pipex->commands_count + 1));
 	if (!pipex->commands_name)
-		return (ft_clean_struct(pipex), ft_error_exit("Error", "malloc"));	
-	while (c < pipex->commands_count)
+	{
+		ft_clean_struct(pipex);
+		ft_error_exit("Error", "malloc");
+	}
+	while (i < pipex->commands_count)
 	{
 		commands = ft_split(argv[i + 2]);
 		if (!commands)
-			return (ft_clean_struct(pipex), ft_error_exit("Error", "malloc"));
-		pipex->commands_name[c] = ft_strdup(commands[0]);
+		{
+			ft_clean_struct(pipex);
+			ft_error_exit("Error", "malloc");
+		}
+		pipex->commands_name[i] = ft_strdup(commands[0]);
 		ft_free_split(commands, ft_split_count(commands));
 		i ++;
-		c ++;
 	}
-	pipex->commands_name[c] = NULL;
+	pipex->commands_name[i] = NULL;
 }
