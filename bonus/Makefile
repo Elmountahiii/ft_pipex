@@ -1,5 +1,4 @@
-NAME = pipex
-
+NAME = ../pipex
 HEADER = pipex_bonus.h
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g  
@@ -12,7 +11,6 @@ parsing/ft_validate_commands_bonus.c execution/ft_allocate_pId_bonus.c execution
 execution/ft_clean_struct_bonus.c  execution/ft_init_heredoc.c parsing/ft_check_here_doc.c  parsing/ft_debug.c \
 execution/ft_here_doc.c
 
-
 OBJ = $(SRC:.c=.o)
 RM = rm -rf
 
@@ -24,7 +22,6 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	@cd .. && cd lib && make 
 	$(CC) $(CFLAGS) $(OBJ) ../lib/lib.a -o $(NAME)
-	make clean
 
 clean :
 	$(RM) $(OBJ)

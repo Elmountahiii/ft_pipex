@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:03:05 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/15 19:39:22 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/15 21:35:01 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_check_here_doc(char *str, t_pipex *pipex)
 {
 	int	is_heredoc;
-	
+
 	is_heredoc = ft_strncmp(str, "here_doc", ft_strlen(str));
 	if (is_heredoc == 0)
 		pipex->is_here_doc = 1;

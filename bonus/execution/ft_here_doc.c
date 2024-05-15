@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:00:11 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/15 19:48:21 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/15 22:38:28 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_here_doc(t_pipex *pipex)
 {
 	char	*line;
-
 	pipex->limiter = ft_strjoin(pipex->limiter, "\n");
 	while (1)
 	{

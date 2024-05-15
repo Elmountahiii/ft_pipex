@@ -6,16 +6,15 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:41:44 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/15 20:39:37 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/15 21:29:23 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex_bonus.h"
 
-
-void close_all(t_pipex *pipex)
+void	close_all_pipes(t_pipex *pipex)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < pipex->commands_count - 1)
@@ -25,55 +24,65 @@ void close_all(t_pipex *pipex)
 		i++;
 	}
 }
-void close_parent_unused_pipes(t_pipex *pipex)
+
+void	ft_read_from(t_pipex *pipex)
 {
 	if (pipex->c == 0)
 	{
-		close(pipex->pipes[pipex->c][1]);
-	}else{
+		dup2(pipex->input_file, STDIN_FILENO);
+		close(pipex->input_file);
+	}
+	else
+	{
+		dup2(pipex->pipes[pipex->c - 1][0], STDIN_FILENO);
 		close(pipex->pipes[pipex->c - 1][1]);
 	}
 }
+
+void	ft_write_to(t_pipex *pipex)
+{
+	if (pipex->c == (pipex->commands_count - 1))
+	{
+		dup2(pipex->output_file, STDOUT_FILENO);
+		close(pipex->output_file);
+	}
+	else
+	{
+		dup2(pipex->pipes[pipex->c][1], STDOUT_FILENO);
+		close(pipex->pipes[pipex->c][0]);
+	}
+	close_all_pipes(pipex);
+}
+
+void	ft_go_next_command(t_pipex *pipex)
+{
+	pipex->c++;
+	pipex->arg_counter++;
+}
+
 void	ft_pipex(int argc, char **argv, char**env)
 {
 	t_pipex	*pipex;
-	int 	p_id;
 
 	pipex = ft_init_struct(argc, argv, env);
 	if (pipex->is_here_doc)
-	{
 		ft_here_doc(pipex);
-		pipex->arg_counter++;
-	}
-	p_id = 0;
-	while (pipex->c < pipex->commands_count) {
-    p_id = fork();
-    if (p_id == 0) {
-		
-		if (pipex->c == 0)
+	while (pipex->c < pipex->commands_count)
+	{
+		pipex->p_id[pipex->c] = fork();
+		if (pipex->p_id[pipex->c] == -1)
+			ft_error_exit("Error", "unable to fork");
+		if (pipex->p_id[pipex->c] == 0)
 		{
-            dup2(pipex->input_file, STDIN_FILENO);
-            close(pipex->input_file);
-        } else {
-            dup2(pipex->pipes[pipex->c - 1][0], STDIN_FILENO);
-            close(pipex->pipes[pipex->c - 1][1]); // Close the write end of the previous pipe
-        }
-        if (pipex->c == (pipex->commands_count - 1)) {
-            dup2(pipex->output_file, STDOUT_FILENO);
-            close(pipex->output_file);
-        } else {
-            dup2(pipex->pipes[pipex->c][1], STDOUT_FILENO);
-            close(pipex->pipes[pipex->c][0]); // Close the read end of the current pipe
-        }
-		close_all(pipex);
-        ft_execute(argv[pipex->arg_counter], env);
-    } else {
-        pipex->c++;
-        pipex->arg_counter++;
-    }
-}
-	
-	ft_clean_struct(pipex);	
-	while (wait(NULL) > 0);
-	
+			ft_read_from(pipex);
+			ft_write_to(pipex);
+			ft_execute(argv[pipex->arg_counter], env);
+		}
+		else
+			ft_go_next_command(pipex);
+	}
+	ft_clean_struct(pipex);
+	while (wait(NULL) > 0)
+	{
+	}
 }

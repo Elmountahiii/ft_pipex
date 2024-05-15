@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:48:26 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/14 14:59:44 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/15 21:44:11 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ void		free_and_null(char **str);
 char		*ft_gnl_strdup(char *str);
 char		*ft_gnl_strjoin(char *rest, char *buffer);
 char		*ft_gnl_strchr(char *str, int c);
-
 
 #endif
