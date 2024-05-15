@@ -1,4 +1,4 @@
-NAME = ../pipex
+NAME = ../pipex_bonus
 HEADER = pipex_bonus.h
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g  

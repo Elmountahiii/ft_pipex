@@ -12,13 +12,8 @@
 
 #include "pipex_bonus.h"
 
-void ll()
-{
-	system("leaks pipex");
-}
 int	main(int argc, char **argv, char **env)
 {
-	atexit(ll);
 	if (argc >= 5)
 		ft_pipex(argc, argv, env);
 	else

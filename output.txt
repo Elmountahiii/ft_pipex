@@ -1,0 +1,13 @@
+ 
+Makefile
+bonus
+infile.txt
+lib
+mandatory
+out
+outfile
+output.txt
+pipex
+pipex_bonus
+tester.sh
+valgrind_check.sh

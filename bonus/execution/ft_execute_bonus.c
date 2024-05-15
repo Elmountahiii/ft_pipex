@@ -12,15 +12,19 @@
 
 #include "../pipex_bonus.h"
 
-void	ft_execute(char *command, char **env)
+void	ft_execute(char *command, char **env , t_pipex *pipex)
 {
 	char	*path;
 	char	**commands;
+	int		i;
 
 	commands = ft_split(command);
 	path = ft_get_path(commands[0], env);
-	if (path)
-		execv(path, commands);
-	free(path);
-	ft_free_split(commands, ft_split_count(commands));
+	 i = execv(path, commands);
+	if (i == -1)
+	{
+		ft_command_not_found(commands[0]);
+		ft_clean_struct(pipex);
+		exit(1);
+	}
 }

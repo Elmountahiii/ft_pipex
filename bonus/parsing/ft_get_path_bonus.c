@@ -24,6 +24,13 @@ char	*ft_get_path(char *command, char **env)
 		exit(1);
 	}
 	i = 0;
+	if (command[0] == '/' || command[0] == '.')
+	{
+		if (access(command, F_OK) != -1 && access(command, X_OK) != -1)
+			return (ft_strdup(command));
+		ft_command_not_found(command);
+		exit(1);
+	}
 	path_list = ft_split_dil(ft_check_path(env), ':');
 	while (command && path_list && path_list[i])
 	{

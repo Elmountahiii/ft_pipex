@@ -76,7 +76,7 @@ void	ft_pipex(int argc, char **argv, char**env)
 		{
 			ft_read_from(pipex);
 			ft_write_to(pipex);
-			ft_execute(argv[pipex->arg_counter], env);
+			ft_execute(argv[pipex->arg_counter], env , pipex);
 		}
 		else
 			ft_go_next_command(pipex);

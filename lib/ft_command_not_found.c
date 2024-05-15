@@ -17,11 +17,11 @@ void	ft_command_not_found(char *command)
 	int	i;
 
 	i = 0;
-	ft_print("Command not found : ", 2);
+	ft_print("Command not found : ", 1);
 	while (command && command[i])
 	{
-		write(2, &command[i], 1);
+		write(1, &command[i], 1);
 		i ++;
 	}
-	ft_print("\n", 2);
+	ft_print("\n", 1);
 }

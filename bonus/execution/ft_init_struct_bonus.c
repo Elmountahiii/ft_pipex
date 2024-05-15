@@ -19,6 +19,7 @@ t_pipex	*ft_init_struct(int argc, char **argv, char **env)
 	pipex = malloc(sizeof(t_pipex));
 	if (!pipex)
 		ft_error_exit("Error", "malloc");
+	(void)env;
 	ft_init_values(pipex);
 	ft_init_heredoc(argv, pipex);
 	ft_count_commands(argc, pipex);

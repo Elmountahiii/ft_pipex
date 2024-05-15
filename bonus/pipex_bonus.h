@@ -40,7 +40,7 @@ typedef struct s_pipex
 char	*ft_get_path(char *command, char **env);
 int		ft_check_file(char *path, int flag);
 char	*ft_check_path(char **env);
-void	ft_execute(char *command, char **env);
+void	ft_execute(char *command, char **env, t_pipex *pipex);
 int		ft_replace_fd(int dest, int src);
 void	ft_open_files(int argc, char **argv, t_pipex *pipex);
 void	ft_pipex(int argc, char **argv, char**env);
