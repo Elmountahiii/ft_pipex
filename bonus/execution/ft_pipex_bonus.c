@@ -6,7 +6,7 @@
 /*   By: elmountahi <elmountahi@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:41:44 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/15 14:30:21 by elmountahi       ###   ########.fr       */
+/*   Updated: 2024/05/15 14:55:59 by elmountahi       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,18 @@
 // 			close(pipex->output_file);	
 // 		}
 // }
+void close_all(t_pipex *pipex)
+{
+	int i;
+
+	i = 0;
+	while (i < pipex->commands_count - 1)
+	{
+		close(pipex->pipes[i][0]);
+		close(pipex->pipes[i][1]);
+		i++;
+	}
+}
 void close_parent_unused_pipes(t_pipex *pipex)
 {
 	if (pipex->c == 0)
@@ -76,10 +88,15 @@ void	ft_pipex(int argc, char **argv, char**env)
             dup2(pipex->pipes[pipex->c][1], STDOUT_FILENO);
             close(pipex->pipes[pipex->c][0]); // Close the read end of the current pipe
         }
-
+		close_all(pipex);	
+        //  while (1)
+		//  {
+		// 	/* code */
+		//  }
+		 
         ft_execute(argv[pipex->arg_counter], env);
     } else {
-        close_parent_unused_pipes(pipex); // Close unused pipes in the parent process
+       // close_parent_unused_pipes(pipex); // Close unused pipes in the parent process
         printf("pipex->c = %d\n", pipex->c);
         fflush(stdout);
         pipex->c++;
@@ -88,6 +105,11 @@ void	ft_pipex(int argc, char **argv, char**env)
 }
 	
 	ft_clean_struct(pipex);
+	// while (1)
+	// {
+	// 	/* code */
+	// }
+	
 	while (wait(NULL) > 0);
 	
 }
