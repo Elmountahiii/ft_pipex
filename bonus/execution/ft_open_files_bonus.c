@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_open_files_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elmountahi <elmountahi@student.42.fr>      +#+  +:+       +#+        */
+/*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:37:59 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/15 15:17:22 by elmountahi       ###   ########.fr       */
+/*   Updated: 2024/05/15 19:41:32 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ void	ft_open_files(int argc, char **argv, t_pipex *pipex)
 	char	*error_file;
 	
 	if (pipex->is_here_doc)
-	pipex->input_file = pipex->pipes[0][0];
+	{
+		pipex->input_file = open("/tmp/here_doc",
+			O_RDWR | O_CREAT | O_APPEND, 0664);
+	}
 	else
 	pipex->input_file = open(argv[1], O_RDONLY);
 	pipex->output_file = open(argv[argc - 1],

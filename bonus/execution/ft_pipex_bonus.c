@@ -3,42 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pipex_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elmountahi <elmountahi@student.42.fr>      +#+  +:+       +#+        */
+/*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:41:44 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/15 15:52:19 by elmountahi       ###   ########.fr       */
+/*   Updated: 2024/05/15 20:39:37 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex_bonus.h"
 
 
-// static void	ft_read_from(t_pipex *pipex)
-// {
-// 	if (pipex->c == 0)
-// 	{
-// 		dup2(pipex->input_file, STDIN_FILENO);
-// 	}
-// 	else
-// 		dup2(pipex->pipes[pipex->pipe_counter - 1][0], STDIN_FILENO);
-// 		close(pipex->input_file);
-// }
-
-// static void	ft_write_to(t_pipex *pipex)
-// {
-// 		if (pipex->c != pipex->commands_count -1)
-// {
-	
-	 
-// 			dup2(pipex->pipes[pipex->pipe_counter][1], STDOUT_FILENO);
-	
-// }
-// 		else
-// 		{
-// 			dup2(pipex->output_file, STDOUT_FILENO);		
-// 			close(pipex->output_file);	
-// 		}
-// }
 void close_all(t_pipex *pipex)
 {
 	int i;
@@ -67,18 +41,18 @@ void	ft_pipex(int argc, char **argv, char**env)
 
 	pipex = ft_init_struct(argc, argv, env);
 	if (pipex->is_here_doc)
+	{
 		ft_here_doc(pipex);
+		pipex->arg_counter++;
+	}
 	p_id = 0;
 	while (pipex->c < pipex->commands_count) {
     p_id = fork();
     if (p_id == 0) {
-        if (pipex->c == 0) {
-			if (pipex->is_here_doc){
-				
-				dup2(pipex->pipes[0][0], STDIN_FILENO);
-			}
-			else
-            	dup2(pipex->input_file, STDIN_FILENO);
+		
+		if (pipex->c == 0)
+		{
+            dup2(pipex->input_file, STDIN_FILENO);
             close(pipex->input_file);
         } else {
             dup2(pipex->pipes[pipex->c - 1][0], STDIN_FILENO);
@@ -91,7 +65,7 @@ void	ft_pipex(int argc, char **argv, char**env)
             dup2(pipex->pipes[pipex->c][1], STDOUT_FILENO);
             close(pipex->pipes[pipex->c][0]); // Close the read end of the current pipe
         }
-		close_all(pipex);		
+		close_all(pipex);
         ft_execute(argv[pipex->arg_counter], env);
     } else {
         pipex->c++;

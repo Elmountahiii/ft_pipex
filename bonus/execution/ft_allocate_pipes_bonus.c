@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_allocate_pipes_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elmountahi <elmountahi@student.42.fr>      +#+  +:+       +#+        */
+/*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:35:42 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/15 15:15:28 by elmountahi       ###   ########.fr       */
+/*   Updated: 2024/05/15 19:40:29 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	ft_allocate_pipes(t_pipex *pipex)
 	int	allocate;
 
 	i = 0;
-	if (pipex->is_here_doc)
-		allocate = pipex->commands_count;
-	else
+	// if (pipex->is_here_doc)
+	// 	allocate = pipex->commands_count;
+	// else
 		allocate = pipex->commands_count - 1;
 	pipex->pipes = malloc(sizeof(int *) * (allocate));
 	if (!pipex->pipes)

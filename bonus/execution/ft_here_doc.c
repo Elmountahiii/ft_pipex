@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_here_doc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elmountahi <elmountahi@student.42.fr>      +#+  +:+       +#+        */
+/*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:00:11 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/15 15:33:29 by elmountahi       ###   ########.fr       */
+/*   Updated: 2024/05/15 19:48:21 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,19 @@ void	ft_here_doc(t_pipex *pipex)
 {
 	char	*line;
 
-	line = NULL;
+	pipex->limiter = ft_strjoin(pipex->limiter, "\n");
 	while (1)
 	{
 		ft_print("pipe heredoc> ", 1);
 		line = get_next_line(0);
-		if (!ft_strncmp(line, pipex->limiter, ft_strlen(pipex->limiter)))
+		if (!ft_strncmp(line, pipex->limiter, ft_strlen(line)))
 		{
 			free(line);
 			break ;
 		}
-		ft_print(line, pipex->pipes[0][1]);
+		ft_print(line, pipex->input_file);
 		free(line);
 	}
-	close(pipex->pipes[0][1]);
+	close(pipex->input_file);
+	pipex->input_file = open("/tmp/here_doc", O_RDWR);
 }
