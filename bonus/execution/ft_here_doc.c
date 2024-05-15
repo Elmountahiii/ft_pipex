@@ -6,7 +6,7 @@
 /*   By: elmountahi <elmountahi@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:00:11 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/14 23:26:22 by elmountahi       ###   ########.fr       */
+/*   Updated: 2024/05/15 15:33:29 by elmountahi       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,8 @@
 void	ft_here_doc(t_pipex *pipex)
 {
 	char	*line;
-	//char	*tmp;
 
 	line = NULL;
-	//tmp = NULL;
-	
-	
-	
 	while (1)
 	{
 		ft_print("pipe heredoc> ", 1);
@@ -31,7 +26,8 @@ void	ft_here_doc(t_pipex *pipex)
 			free(line);
 			break ;
 		}
-		ft_print(line, pipex->pipes[0][0]);
+		ft_print(line, pipex->pipes[0][1]);
 		free(line);
 	}
+	close(pipex->pipes[0][1]);
 }

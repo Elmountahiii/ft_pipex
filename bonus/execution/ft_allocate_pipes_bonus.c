@@ -6,7 +6,7 @@
 /*   By: elmountahi <elmountahi@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:35:42 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/15 12:38:12 by elmountahi       ###   ########.fr       */
+/*   Updated: 2024/05/15 15:15:28 by elmountahi       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,20 @@
 void	ft_allocate_pipes(t_pipex *pipex)
 {
 	int	i;
+	int	allocate;
 
 	i = 0;
-	pipex->pipes = malloc(sizeof(int *) * (pipex->commands_count - 1));
+	if (pipex->is_here_doc)
+		allocate = pipex->commands_count;
+	else
+		allocate = pipex->commands_count - 1;
+	pipex->pipes = malloc(sizeof(int *) * (allocate));
 	if (!pipex->pipes)
 	{
 		ft_clean_struct(pipex);
 		ft_error_exit("Error", "malloc");
 	}
-	while (i < (pipex->commands_count - 1))
+	while (i < allocate)
 	{
 		pipex->pipes[i] = malloc(sizeof(int) * 2);
 		if (!pipex->pipes[i] || pipe(pipex->pipes[i]) == -1)

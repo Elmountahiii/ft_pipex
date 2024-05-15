@@ -2,7 +2,7 @@ NAME = pipex
 
 HEADER = pipex_bonus.h
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g 
+CFLAGS = -Wall -Wextra -Werror -g  
 SRC = main_bonus.c parsing/ft_check_file_bonus.c parsing/ft_get_path_bonus.c   \
  parsing/ft_check_path_bonus.c  execution/ft_execute_bonus.c execution/ft_replace_fd_bonus.c \
 execution/ft_open_files_bonus.c   parsing/ft_count_command_bonus.c \

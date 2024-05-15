@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_debug.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elmountahi <elmountahi@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:53:53 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/14 18:23:15 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:25:44 by elmountahi       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ void	ft_debug(t_pipex *pipex)
 	printf("commands count : %d\n",pipex->commands_count);
 	printf("pipe counter : %d\n",pipex->pipe_counter);
 	printf("arg counter : %d\n",pipex->arg_counter);
-	while (pipex->commands_name[i])
+	printf("pipes number : %d\n",pipex->pipes_number);
+	printf("commands name : \n");
+	while (pipex->commands_name && pipex->commands_name[i])
 	{
 		printf("%d : %s\n",i,pipex->commands_name[i]);
 		i++;
