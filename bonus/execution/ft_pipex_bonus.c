@@ -6,7 +6,7 @@
 /*   By: elmountahi <elmountahi@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:41:44 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/15 14:23:20 by elmountahi       ###   ########.fr       */
+/*   Updated: 2024/05/15 14:30:21 by elmountahi       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,18 @@ void	ft_pipex(int argc, char **argv, char**env)
             dup2(pipex->pipes[pipex->c - 1][0], STDIN_FILENO);
             close(pipex->pipes[pipex->c - 1][1]); // Close the write end of the previous pipe
         }
-			close(pipex->pipes[pipex->pipe_counter][0]);
 
         if (pipex->c == (pipex->commands_count - 1)) {
             dup2(pipex->output_file, STDOUT_FILENO);
             close(pipex->output_file);
-			//close(pipex->pipes[pipex->c][1]);
         } else {
             dup2(pipex->pipes[pipex->c][1], STDOUT_FILENO);
-            close(pipex->pipes[pipex->c][0]); // Close the read end of the current pipe	
+            close(pipex->pipes[pipex->c][0]); // Close the read end of the current pipe
         }
 
         ft_execute(argv[pipex->arg_counter], env);
     } else {
-      //  close_parent_unused_pipes(pipex); // Close unused pipes in the parent process
+        close_parent_unused_pipes(pipex); // Close unused pipes in the parent process
         printf("pipex->c = %d\n", pipex->c);
         fflush(stdout);
         pipex->c++;
