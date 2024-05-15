@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elmountahi <elmountahi@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:43:51 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/14 22:25:39 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:37:22 by elmountahi       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_pipex
 	int		arg_counter;
 	int		is_here_doc;
 	char	*limiter;
+	int		pipes_number;
 	int		c;
 }	t_pipex;
 

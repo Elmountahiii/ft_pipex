@@ -1,3 +1,1 @@
-pipe counter: 0
-pipe c: 0
-HELLO
+      10

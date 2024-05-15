@@ -6,7 +6,7 @@
 /*   By: elmountahi <elmountahi@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:35:42 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/14 23:40:17 by elmountahi       ###   ########.fr       */
+/*   Updated: 2024/05/15 12:38:12 by elmountahi       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	ft_allocate_pipes(t_pipex *pipex)
 			ft_error_exit("Error", "malloc");
 		}
 		i ++;
+		pipex->pipes_number++;
 	}
 
 }
