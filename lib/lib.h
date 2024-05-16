@@ -42,5 +42,6 @@ int		ft_count_quote_allocation(char *str, int *start);
 void	ft_error_exit(char *message, char *error);
 void	ft_command_not_found(char *command);
 int		ft_strncmp(char *s1, char *s2, int n);
+int		ft_strcmp(char *s1, char *s2);
 
 #endif

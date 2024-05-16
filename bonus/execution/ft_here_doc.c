@@ -15,6 +15,7 @@
 void	ft_here_doc(t_pipex *pipex)
 {
 	char	*line;
+
 	pipex->limiter = ft_strjoin(pipex->limiter, "\n");
 	while (1)
 	{

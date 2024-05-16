@@ -64,7 +64,7 @@ void	ft_pipex(int argc, char **argv, char**env)
 {
 	t_pipex	*pipex;
 
-	pipex = ft_init_struct(argc, argv, env);
+	pipex = ft_init_struct(argc, argv);
 	if (pipex->is_here_doc)
 		ft_here_doc(pipex);
 	while (pipex->c < pipex->commands_count)
@@ -76,7 +76,7 @@ void	ft_pipex(int argc, char **argv, char**env)
 		{
 			ft_read_from(pipex);
 			ft_write_to(pipex);
-			ft_execute(argv[pipex->arg_counter], env , pipex);
+			ft_execute(argv[pipex->arg_counter], env, pipex);
 		}
 		else
 			ft_go_next_command(pipex);

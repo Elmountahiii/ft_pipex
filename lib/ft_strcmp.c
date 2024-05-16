@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_commands_bonus.c                          :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 17:36:29 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/14 21:36:03 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/05/16 12:42:32 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/16 12:43:03 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex_bonus.h"
+#include "lib.h"
 
-void	ft_check_commands(char **env, t_pipex *pipex)
+int	ft_strcmp(char *s1, char *s2)
 {
-	int		i;
-	char	*path;
+	int	i;
 
 	i = 0;
-	while (i < pipex->commands_count)
-	{
-		path = ft_get_path(pipex->commands_name[i], env);
-		if (!path)
-		{
-			ft_command_not_found(pipex->commands_name[i]);
-			ft_clean_struct(pipex);
-			exit(1);
-		}
-		free(path);
-		i ++;
-	}
+	while (s1 && s2 && s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

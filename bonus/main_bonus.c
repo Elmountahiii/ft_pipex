@@ -18,7 +18,7 @@ int	main(int argc, char **argv, char **env)
 		ft_pipex(argc, argv, env);
 	else
 	{
-		ft_print("Error : bad arguments\n", 2);
+		ft_print("Error : bad arguments\n", 1);
 		exit (1);
 	}
 	return (0);

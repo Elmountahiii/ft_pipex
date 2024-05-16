@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:16:09 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/15 22:31:56 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/16 13:32:33 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ char	*ft_strdup(char *s1)
 	int		len;
 	int		i;
 	char	*s2;
-	if (!s1)
-		return (NULL);
+	// if (!s1)
+	// 	return (NULL);
 	len = ft_strlen(s1);
 	s2 = malloc(len * sizeof(char) + 1);
 	i = 0;
@@ -26,7 +26,7 @@ char	*ft_strdup(char *s1)
 	{
 		return (NULL);
 	}
-	while (s1[i])
+	while (s1 && s1[i])
 	{
 		s2[i] = s1[i];
 		i++;
