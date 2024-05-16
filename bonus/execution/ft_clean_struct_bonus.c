@@ -22,7 +22,8 @@ void	ft_clean_struct(t_pipex *pipex)
 	if (pipex->output_file != -1)
 		close(pipex->output_file);
 	unlink("/tmp/here_doc");
-	free(pipex->limiter);
+	if (pipex->is_here_doc)
+		free(pipex->limiter);
 	ft_free_split(pipex->commands_name, ft_split_count(pipex->commands_name));
 	while (i < (pipex->commands_count - 1))
 	{

@@ -60,6 +60,8 @@ void	ft_go_next_command(t_pipex *pipex)
 	pipex->arg_counter++;
 }
 
+
+
 void	ft_pipex(int argc, char **argv, char**env)
 {
 	t_pipex	*pipex;

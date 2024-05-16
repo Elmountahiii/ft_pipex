@@ -1,7 +1,7 @@
 NAME = pipex
 HEADER = mandatory/pipex.h
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror 
 SRC = mandatory/main.c mandatory/parsing/ft_check_file.c mandatory/parsing/ft_get_path.c   \
  mandatory/parsing/ft_check_path.c  mandatory/execution/ft_execute.c mandatory/execution/ft_replace_fd.c \
 mandatory/execution/ft_open_files.c   mandatory/parsing/ft_count_command.c \
