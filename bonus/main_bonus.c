@@ -14,7 +14,6 @@
 
 int	main(int argc, char **argv, char **env)
 {
-	
 	if (argc >= 5)
 		ft_pipex(argc, argv, env);
 	else

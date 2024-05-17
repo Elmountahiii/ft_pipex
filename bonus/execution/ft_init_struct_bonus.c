@@ -25,6 +25,5 @@ t_pipex	*ft_init_struct(int argc, char **argv)
 	ft_allocate_pipes(pipex);
 	ft_open_files(argc, argv, pipex);
 	ft_extract_commands(argv, pipex);
-	ft_allocate_pid(pipex);
 	return (pipex);
 }

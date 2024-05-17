@@ -17,8 +17,7 @@ char	*ft_strdup(char *s1)
 	int		len;
 	int		i;
 	char	*s2;
-	// if (!s1)
-	// 	return (NULL);
+
 	len = ft_strlen(s1);
 	s2 = malloc(len * sizeof(char) + 1);
 	i = 0;

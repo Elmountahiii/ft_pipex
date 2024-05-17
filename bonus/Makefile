@@ -2,12 +2,11 @@ NAME = ../pipex_bonus
 HEADER = pipex_bonus.h
 CC = cc
 CFLAGS = -Wall -Wextra -Werror 
-SRC = main_bonus.c parsing/ft_check_file_bonus.c parsing/ft_get_path_bonus.c   \
+SRC = main_bonus.c parsing/ft_get_path_bonus.c   \
  parsing/ft_check_path_bonus.c  execution/ft_execute_bonus.c  \
 execution/ft_open_files_bonus.c   parsing/ft_count_command_bonus.c \
 execution/ft_allocate_pipes_bonus.c execution/ft_init_struct_bonus.c execution/ft_pipex_bonus.c \
-parsing/ft_extract_commands_bonus.c \
- execution/ft_allocate_pId_bonus.c execution/ft_init_values_bonus.c \
+parsing/ft_extract_commands_bonus.c  execution/ft_init_values_bonus.c \
 execution/ft_clean_struct_bonus.c  execution/ft_init_heredoc.c parsing/ft_check_here_doc.c  \
 execution/ft_here_doc.c 
 

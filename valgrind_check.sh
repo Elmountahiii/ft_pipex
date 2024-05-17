@@ -1,1 +1,0 @@
-valgrind --leak-check=full --trace-children=yes  ./pipex infile.txt "echo \"hello bro\"" "cat " output.txt 

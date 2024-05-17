@@ -17,7 +17,7 @@ void	close_all_pipes(t_pipex *pipex)
 	int	i;
 
 	i = 0;
-	while (i < pipex->commands_count - 1)
+	while (i < pipex->commands_number - 1)
 	{
 		close(pipex->pipes[i][0]);
 		close(pipex->pipes[i][1]);
@@ -27,40 +27,38 @@ void	close_all_pipes(t_pipex *pipex)
 
 void	ft_read_from(t_pipex *pipex)
 {
-	if (pipex->c == 0)
+	if (pipex->counter == 0)
 	{
 		dup2(pipex->input_file, STDIN_FILENO);
 		close(pipex->input_file);
 	}
 	else
 	{
-		dup2(pipex->pipes[pipex->c - 1][0], STDIN_FILENO);
-		close(pipex->pipes[pipex->c - 1][1]);
+		dup2(pipex->pipes[pipex->counter - 1][0], STDIN_FILENO);
+		close(pipex->pipes[pipex->counter - 1][1]);
 	}
 }
 
 void	ft_write_to(t_pipex *pipex)
 {
-	if (pipex->c == (pipex->commands_count - 1))
+	if (pipex->counter == (pipex->commands_number - 1))
 	{
 		dup2(pipex->output_file, STDOUT_FILENO);
 		close(pipex->output_file);
 	}
 	else
 	{
-		dup2(pipex->pipes[pipex->c][1], STDOUT_FILENO);
-		close(pipex->pipes[pipex->c][0]);
+		dup2(pipex->pipes[pipex->counter][1], STDOUT_FILENO);
+		close(pipex->pipes[pipex->counter][0]);
 	}
 	close_all_pipes(pipex);
 }
 
 void	ft_go_next_command(t_pipex *pipex)
 {
-	pipex->c++;
+	pipex->counter++;
 	pipex->arg_counter++;
 }
-
-
 
 void	ft_pipex(int argc, char **argv, char**env)
 {
@@ -69,12 +67,12 @@ void	ft_pipex(int argc, char **argv, char**env)
 	pipex = ft_init_struct(argc, argv);
 	if (pipex->is_here_doc)
 		ft_here_doc(pipex);
-	while (pipex->c < pipex->commands_count)
+	while (pipex->counter < pipex->commands_number)
 	{
-		pipex->p_id[pipex->c] = fork();
-		if (pipex->p_id[pipex->c] == -1)
+		pipex->p_id = fork();
+		if (pipex->p_id == -1)
 			ft_error_exit("Error", "unable to fork");
-		if (pipex->p_id[pipex->c] == 0)
+		if (pipex->p_id == 0)
 		{
 			ft_read_from(pipex);
 			ft_write_to(pipex);

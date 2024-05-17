@@ -18,7 +18,7 @@ void	ft_allocate_pipes(t_pipex *pipex)
 	int	allocate;
 
 	i = 0;
-	allocate = pipex->commands_count - 1;
+	allocate = pipex->commands_number - 1;
 	pipex->pipes = malloc(sizeof(int *) * (allocate));
 	if (!pipex->pipes)
 	{

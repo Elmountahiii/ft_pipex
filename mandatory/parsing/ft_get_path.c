@@ -18,11 +18,6 @@ char	*ft_get_path(char *command, char **env)
 	int		i;
 	char	*path;
 
-	if (!ft_check_path(env))
-	{
-		ft_command_not_found(command);
-		exit(1);
-	}
 	i = 0;
 	path_list = ft_split_dil(ft_check_path(env), ':');
 	while (command && path_list && path_list[i])

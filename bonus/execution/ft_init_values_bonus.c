@@ -14,16 +14,15 @@
 
 void	ft_init_values(t_pipex *pipex)
 {
-	pipex->pipe_counter = 0;
-	pipex->arg_counter = 2;
-	pipex->commands_count = 0;
 	pipex->commands_name = NULL;
-	pipex->is_here_doc = 0;
-	pipex->limiter = NULL;
+	pipex->commands_number = 0;
 	pipex->pipes = NULL;
-	pipex->p_id = NULL;
+	pipex->pipes_number = 0;
 	pipex->input_file = -1;
 	pipex->output_file = -1;
-	pipex->c = 0;
-	pipex->pipes_number = 0;
+	pipex->p_id = -1;
+	pipex->arg_counter = 2;
+	pipex->is_here_doc = 0;
+	pipex->limiter = NULL;
+	pipex->counter = 0;
 }

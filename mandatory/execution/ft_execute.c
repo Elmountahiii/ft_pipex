@@ -12,15 +12,31 @@
 
 #include "../pipex.h"
 
-void	ft_execute(char *command, char **env)
+void	ft_execute(char *command, char **env, t_pipex *pipex)
 {
 	char	*path;
 	char	**commands;
 
 	commands = ft_split(command);
-	path = ft_get_path(commands[0], env);
-	if (path)
-		execv(path, commands);
-	free(path);
-	ft_free_split(commands, ft_split_count(commands));
+	if (!commands || !commands[0])
+	{
+		ft_command_not_found("");
+		ft_clean_struct(pipex);
+		exit(1);
+	}
+	if (ft_strncmp(commands[0], "./", 2) == 0
+		|| ft_strncmp(commands[0], "/", 1) == 0)
+		path = ft_strdup(commands[0]);
+	else
+		path = ft_get_path(commands[0], env);
+	if (!path)
+	{
+		ft_command_not_found(commands[0]);
+		ft_clean_struct(pipex);
+		exit(1);
+	}
+	execv(path, commands);
+	perror("Error");
+	ft_clean_struct(pipex);
+	exit(1);
 }

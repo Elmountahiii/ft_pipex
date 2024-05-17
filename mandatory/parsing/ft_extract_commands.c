@@ -16,25 +16,23 @@ void	ft_extract_commands(char **argv, t_pipex *pipex)
 {
 	char	**commands;
 	int		i;
+	int		c;
 
-	i = 0;
-	pipex->commands_name = malloc(sizeof(char *) * (pipex->commands_count + 1));
+	c = 0;
+	pipex->commands_name = malloc(sizeof(char *)
+			* (pipex->commands_number + 1));
 	if (!pipex->commands_name)
-	{
-		ft_clean_struct(pipex);
-		ft_error_exit("Error", "malloc");
-	}
-	while (i < pipex->commands_count)
+		return (ft_clean_struct(pipex), ft_error_exit("Error", "malloc"));
+	i = 0;
+	while (c < pipex->commands_number)
 	{
 		commands = ft_split(argv[i + 2]);
 		if (!commands)
-		{
-			ft_clean_struct(pipex);
-			ft_error_exit("Error", "malloc");
-		}
-		pipex->commands_name[i] = ft_strdup(commands[0]);
+			return (ft_clean_struct(pipex), ft_error_exit("Error", "malloc"));
+		pipex->commands_name[c] = ft_strdup(commands[0]);
 		ft_free_split(commands, ft_split_count(commands));
+		c ++;
 		i ++;
 	}
-	pipex->commands_name[i] = NULL;
+	pipex->commands_name[c] = NULL;
 }

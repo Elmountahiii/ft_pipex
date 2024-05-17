@@ -19,14 +19,15 @@ void	ft_extract_commands(char **argv, t_pipex *pipex)
 	int		c;
 
 	c = 0;
-	pipex->commands_name = malloc(sizeof(char *) * (pipex->commands_count + 1));
+	pipex->commands_name = malloc(sizeof(char *)
+			* (pipex->commands_number + 1));
 	if (!pipex->commands_name)
 		return (ft_clean_struct(pipex), ft_error_exit("Error", "malloc"));
 	if (pipex->is_here_doc)
 		i = 1;
 	else
 		i = 0;
-	while (c < pipex->commands_count)
+	while (c < pipex->commands_number)
 	{
 		commands = ft_split(argv[i + 2]);
 		if (!commands)

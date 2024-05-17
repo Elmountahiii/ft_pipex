@@ -25,7 +25,7 @@ void	ft_clean_struct(t_pipex *pipex)
 	if (pipex->is_here_doc)
 		free(pipex->limiter);
 	ft_free_split(pipex->commands_name, ft_split_count(pipex->commands_name));
-	while (i < (pipex->commands_count - 1))
+	while (i < (pipex->commands_number - 1))
 	{
 		close(pipex->pipes[i][0]);
 		close(pipex->pipes[i][1]);
@@ -33,6 +33,5 @@ void	ft_clean_struct(t_pipex *pipex)
 		i++;
 	}
 	free(pipex->pipes);
-	free(pipex->p_id);
 	free(pipex);
 }

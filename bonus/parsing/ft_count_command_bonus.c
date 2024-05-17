@@ -15,17 +15,14 @@
 void	ft_count_commands(int argc, t_pipex *pipex)
 {
 	int	start;
-	int	i;
 
 	if (pipex->is_here_doc)
 		start = 3;
 	else
 		start = 2;
-	i = 0;
 	while (start < argc -1)
 	{
 		start++;
-		i ++;
+		pipex->commands_number++;
 	}
-	pipex->commands_count = i;
 }

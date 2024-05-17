@@ -15,15 +15,17 @@
 void	ft_allocate_pipes(t_pipex *pipex)
 {
 	int	i;
+	int	allocate;
 
 	i = 0;
-	pipex->pipes = malloc(sizeof(int *) * (pipex->commands_count + 1));
+	allocate = pipex->commands_number - 1;
+	pipex->pipes = malloc(sizeof(int *) * (allocate));
 	if (!pipex->pipes)
 	{
 		ft_clean_struct(pipex);
 		ft_error_exit("Error", "malloc");
 	}
-	while (i < pipex->commands_count)
+	while (i < allocate)
 	{
 		pipex->pipes[i] = malloc(sizeof(int) * 2);
 		if (!pipex->pipes[i] || pipe(pipex->pipes[i]) == -1)
@@ -32,6 +34,6 @@ void	ft_allocate_pipes(t_pipex *pipex)
 			ft_error_exit("Error", "malloc");
 		}
 		i ++;
+		pipex->pipes_number++;
 	}
-	pipex->pipes[i] = NULL;
 }

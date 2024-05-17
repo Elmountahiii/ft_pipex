@@ -16,25 +16,27 @@ void	ft_execute(char *command, char **env, t_pipex *pipex)
 {
 	char	*path;
 	char	**commands;
-	int		i;
 
 	commands = ft_split(command);
-	// if (ft_strlen(commands[0]) != 0
-	// 	&& (commands[0][0] == '/' || commands[0][0] == '.'))
-	// 	path = commands[0];
-	// else
-		path = ft_get_path(commands[0], env);
-	// if (!path)
-	// {
-	// 	ft_command_not_found(commands[0]);
-	// 	ft_clean_struct(pipex);
-	// 	exit(1);
-	// }
-	i = execv(path, commands);
-	if (i == -1)
+	if (!commands || !commands[0])
 	{
-		perror("Error");
+		ft_command_not_found("");
 		ft_clean_struct(pipex);
 		exit(1);
 	}
+	if (ft_strncmp(commands[0], "./", 2) == 0
+		|| ft_strncmp(commands[0], "/", 1) == 0)
+		path = ft_strdup(commands[0]);
+	else
+		path = ft_get_path(commands[0], env);
+	if (!path)
+	{
+		ft_command_not_found(commands[0]);
+		ft_clean_struct(pipex);
+		exit(1);
+	}
+	execv(path, commands);
+	perror("Error");
+	ft_clean_struct(pipex);
+	exit(1);
 }
