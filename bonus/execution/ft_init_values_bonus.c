@@ -14,7 +14,6 @@
 
 void	ft_init_values(t_pipex *pipex)
 {
-	pipex->commands_name = NULL;
 	pipex->commands_number = 0;
 	pipex->pipes = NULL;
 	pipex->pipes_number = 0;

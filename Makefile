@@ -6,7 +6,7 @@ SRC = mandatory/main.c  mandatory/parsing/ft_get_path.c  \
 mandatory/parsing/ft_check_path.c  mandatory/execution/ft_execute.c  \
 mandatory/execution/ft_open_files.c  mandatory/parsing/ft_count_command.c \
 mandatory/execution/ft_allocate_pipes.c mandatory/execution/ft_init_struct.c \
-mandatory/execution/ft_pipex.c mandatory/parsing/ft_extract_commands.c \
+mandatory/execution/ft_pipex.c  \
 mandatory/execution/ft_init_values.c mandatory/execution/ft_clean_struct.c 
 OBJ = $(SRC:.c=.o)
 OBJ_TEST = $(SRC_TEST:.c=.o)

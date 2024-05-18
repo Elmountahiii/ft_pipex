@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pipex.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-moun <yel-moun@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/06 16:42:32 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/12 13:49:25 by yel-moun        ###   ########.fr       */
+/*   Created: 2024/05/18 13:57:21 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/18 13:58:42 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,34 +23,24 @@ void	close_all_pipes(t_pipex *pipex)
 		close(pipex->pipes[i][1]);
 		i++;
 	}
+	close(pipex->input_file);
+	close(pipex->output_file);
 }
 
 void	ft_read_from(t_pipex *pipex)
 {
 	if (pipex->counter == 0)
-	{
 		dup2(pipex->input_file, STDIN_FILENO);
-		close(pipex->input_file);
-	}
 	else
-	{
 		dup2(pipex->pipes[pipex->counter - 1][0], STDIN_FILENO);
-		close(pipex->pipes[pipex->counter - 1][1]);
-	}
 }
 
 void	ft_write_to(t_pipex *pipex)
 {
 	if (pipex->counter == (pipex->commands_number - 1))
-	{
 		dup2(pipex->output_file, STDOUT_FILENO);
-		close(pipex->output_file);
-	}
 	else
-	{
 		dup2(pipex->pipes[pipex->counter][1], STDOUT_FILENO);
-		close(pipex->pipes[pipex->counter][0]);
-	}
 	close_all_pipes(pipex);
 }
 

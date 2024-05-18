@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 16:13:37 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/11 16:20:20 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/18 13:56:59 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_init_values(t_pipex *pipex)
 {
-	pipex->commands_name = NULL;
 	pipex->commands_number = 0;
 	pipex->pipes = NULL;
 	pipex->pipes_number = 0;

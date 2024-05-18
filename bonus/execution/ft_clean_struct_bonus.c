@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:36:25 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/16 13:31:58 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/18 13:54:22 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_clean_struct(t_pipex *pipex)
 	unlink("/tmp/here_doc");
 	if (pipex->is_here_doc)
 		free(pipex->limiter);
-	ft_free_split(pipex->commands_name, ft_split_count(pipex->commands_name));
 	while (i < (pipex->commands_number - 1))
 	{
 		close(pipex->pipes[i][0]);

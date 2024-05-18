@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:52:45 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/13 14:52:51 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/18 13:58:21 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 
 typedef struct s_pipex
 {
-	char	**commands_name;
 	int		commands_number;
 	int		**pipes;
 	int		pipes_number;
@@ -40,8 +39,6 @@ void	ft_pipex(int argc, char **argv, char**env);
 void	ft_count_commands(int argc, t_pipex *pipex);
 void	ft_allocate_pipes(t_pipex *pipex);
 t_pipex	*ft_init_struct(int argc, char **argv);
-void	ft_check_commands(char **env, t_pipex *pipex);
-void	ft_extract_commands(char **argv, t_pipex *pipex);
 void	ft_init_values(t_pipex *pipex);
 void	ft_clean_struct(t_pipex *pipex);
 

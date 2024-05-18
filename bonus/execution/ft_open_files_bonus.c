@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:37:59 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/15 21:23:08 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/18 13:48:57 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,12 @@ void	ft_open_files(int argc, char **argv, t_pipex *pipex)
 				O_RDWR | O_CREAT | O_APPEND, 0777);
 	else
 		pipex->input_file = open(argv[1], O_RDONLY);
-	pipex->output_file = open(argv[argc - 1],
-			O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	if (pipex->is_here_doc)
+		pipex->output_file = open(argv[argc - 1],
+				O_WRONLY | O_CREAT | O_APPEND, 0664);
+	else
+		pipex->output_file = open(argv[argc - 1],
+				O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (pipex->input_file == -1 || pipex->output_file == -1)
 	{
 		if (pipex->input_file == -1)
