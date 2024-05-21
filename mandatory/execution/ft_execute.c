@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:17:42 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/18 13:56:35 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/21 11:30:06 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_execute(char *command, char **env, t_pipex *pipex)
 		ft_clean_struct(pipex);
 		exit(1);
 	}
-	execv(path, commands);
+	execve(path, commands, env);
 	perror("Error");
 	ft_clean_struct(pipex);
 	exit(1);
